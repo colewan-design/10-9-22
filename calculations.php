@@ -216,6 +216,7 @@ require_once("process.php");
                             <th>Deduction Name</th>
                             <th >Description</th>
                             <th>Amount</th>
+                         
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -225,7 +226,15 @@ require_once("process.php");
                 <tr>
                     <td><?php echo $row['deductionName']; ?></td>
                     <td><?php echo $row['description']; ?></td>
-                    <td><?php echo $row['amount']; ?></td>
+                 
+                   
+                    <td><?php $deduction_type = $row['deductionType'];
+                    $deduction_Amount = $row['amount'];
+                     if($deduction_type == 'percentage') {
+                        echo $deduction_Amount.'%';
+                     } else{
+                        echo $deduction_Amount;
+                     }?></td>
                     <td align="center">
                         <a href="process.php?deductionDelete=<?php echo $row['deductionId']; ?>">
                             <class class="btn btn-danger btn-sm">Delete</class>
